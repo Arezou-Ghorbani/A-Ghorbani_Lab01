@@ -6,6 +6,7 @@ export default function App() {
   const[taskItems, setTaskItems]=useState([]);
   const handleTask=()=>
   {
+    Keyboard.dismiss();
     setTaskItems([...taskItems,task])
     setTask(null)
   }
