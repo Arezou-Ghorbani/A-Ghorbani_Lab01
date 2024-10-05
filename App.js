@@ -5,12 +5,17 @@ import MySwitchComponent from './components/MySwitchComponent';
 
 export default function App() {
   const [task, setTask] = useState();
-  
+  const [isActive, setIsActive] = useState(false);
+  const handleBooleanFromChild = (value) => {
+    setIsActive(value);
+  };
   const [taskItems, setTaskItems] = useState([]);
   const handleTask = () => {
     Keyboard.dismiss();
     setTaskItems([...taskItems, task])
     setTask(null)
+    setIsActive(isActive)
+
   }
 
   const completeTask = (index) => {
@@ -32,7 +37,7 @@ export default function App() {
                return (
                
              <TouchableOpacity key={index} onPress={()=>completeTask(index)}>
-                <Task  text={item} />
+                <Task  text={item} isActive={isActive}/>
              </TouchableOpacity>
                )
               })
@@ -48,7 +53,7 @@ export default function App() {
       >
         <View style={styles.inputContainer}>
           <TextInput style={styles.input} placeholder={"insert your task"} value={task} onChangeText={text => setTask(text)} />
-          <MySwitchComponent va></MySwitchComponent>
+          <MySwitchComponent sendBooleanToParent={handleBooleanFromChild} ></MySwitchComponent>
 
           <TouchableOpacity onPress={handleTask}>
             <View style={styles.addWrapper}>

@@ -1,20 +1,24 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import Ionicons from '@expo/vector-icons/Ionicons';
 
 const Task = (props) => {
-
+    const taskStatus = useMemo(() => props.isActive, []);
     return (
         <View style={styles.item}>
             <View style={styles.itemLeft}>
-
-            <Ionicons name="checkmark-circle" size={32} color="green" />
+                {taskStatus ? (
+                    <Ionicons name="checkmark-circle" size={28} color="green" />
+                ) : (
+                    <Ionicons name="play-circle" size={28} color="blue" />
+                )}
 
                 <Text style={styles.itemText}> {props.text}</Text>
-                
+
             </View>
+
             <Ionicons name="trash" size={30} color="red" />
-        
+
         </View>
 
     )
