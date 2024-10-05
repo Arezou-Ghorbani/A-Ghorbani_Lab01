@@ -1,8 +1,11 @@
 import { KeyboardAvoidingView, StyleSheet, Text, TextInput, View, Platform, TouchableOpacity, Keyboard } from 'react-native';
 import Task from './components/Task'
 import React, { useState } from 'react';
+import MySwitchComponent from './components/MySwitchComponent';
+
 export default function App() {
   const [task, setTask] = useState();
+  
   const [taskItems, setTaskItems] = useState([]);
   const handleTask = () => {
     Keyboard.dismiss();
@@ -45,6 +48,8 @@ export default function App() {
       >
         <View style={styles.inputContainer}>
           <TextInput style={styles.input} placeholder={"insert your task"} value={task} onChangeText={text => setTask(text)} />
+          <MySwitchComponent va></MySwitchComponent>
+
           <TouchableOpacity onPress={handleTask}>
             <View style={styles.addWrapper}>
               <Text style={styles.addText}>+</Text>
@@ -85,7 +90,6 @@ const styles = StyleSheet.create({
     bottom: 60,
     width: '100%',
     flexDirection: 'column',
-
     justifyContent: 'space-between',
     alignItems: 'center'
   },
@@ -97,7 +101,7 @@ const styles = StyleSheet.create({
     borderColor: '#C0C0C0',
     borderWidth: 1,
     width: 250,
-    marginRight: 30
+    marginRight: 15
   },
   addWrapper: {
     width: 60,

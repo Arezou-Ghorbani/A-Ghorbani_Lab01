@@ -1,14 +1,20 @@
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import Ionicons from '@expo/vector-icons/Ionicons';
+
 const Task = (props) => {
 
     return (
         <View style={styles.item}>
             <View style={styles.itemLeft}>
-                <TouchableOpacity style={styles.square}></TouchableOpacity>
+
+            <Ionicons name="checkmark-circle" size={32} color="green" />
+
                 <Text style={styles.itemText}> {props.text}</Text>
+                
             </View>
-            <View style={styles.circular}></View>
+            <Ionicons name="trash" size={30} color="red" />
+        
         </View>
 
     )
@@ -46,17 +52,6 @@ const styles = StyleSheet.create({
         maxWidth: '80%'
 
     },
-
-
-    circular: {
-        width: 12,
-        height: 12,
-        borderColor: '#55BCF6',
-        borderWidth: 2,
-        borderRadius: 5,
-
-    }
-
 
 
 })
